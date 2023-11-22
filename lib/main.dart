@@ -31,21 +31,79 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
         ),
         title: Text(title),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.sort),
+            icon: const Icon(Icons.sort),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           )
         ],
       ),
-      body: Container(),
+      body: const _FilmList(),
+    );
+  }
+}
+
+class _FilmList extends StatelessWidget {
+  const _FilmList({super.key});
+
+  static final List<String> films = <String>[
+    'Служебный роман',
+    'Москва слезам не верит',
+    'Иван Васильевич меняет профессию',
+    'Джентльмены удачи',
+    'Бриллиантовая рука'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: List.generate(
+        films.length,
+        (int index) => ColoredBox(
+          color: Colors.purple,
+          child: FilmTile(title: films[index]),
+        ),
+      ),
+    );
+  }
+}
+
+class FilmTile extends StatelessWidget {
+  const FilmTile({super.key, required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        const Expanded(
+          child: FlutterLogo(),
+        ),
+        Expanded(
+          flex: 3,
+          child: Column(
+            children: <Widget>[
+              Text(title),
+              const Row(
+                children: <Widget>[
+                  Icon(Icons.star),
+                  Text('4.8'),
+                ],
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
