@@ -38,17 +38,7 @@ class FilmTile extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: Image.network(
-            picture,
-            loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
-              if (loadingProgress == null) {
-                return child;
-              }
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-          ),
+          child: ImageNetwork(),
         ),
         Expanded(
           flex: 2,

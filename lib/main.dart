@@ -112,15 +112,9 @@ class _FilmList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 2 / 3,
-      ),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: FilmTile.fromModel(model: _films[index % _films.length]),
-        );
+        return FilmTile.fromModel(model: _films[index % _films.length]);
       },
     );
   }
